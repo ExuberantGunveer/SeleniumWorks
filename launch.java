@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -15,6 +16,7 @@ public class launch {
         WebDriver driver = new ChromeDriver();
 
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         driver.get("https://www.google.co.in/");
         //driver.findElement(By.linkText("Create an account")).click();
@@ -52,17 +54,18 @@ public class launch {
         select1.selectByVisibleText("Jan");
         Select select2 = new Select(year);
         select2.selectByVisibleText("1992");
+        Thread.sleep(10000);
+        driver.findElement(By.xpath("//input[contains(@id,'u_2_5_')]")).click();
 
-        WebElement radio =  driver.findElement(By.id("u_2_5_"));
-        radio.click();
+       // WebElement radio =  driver.findElement(By.id("u_2_5_"));
+       // radio.click();
 
-
-
-
-
-
-
-
+        driver.navigate().to("https://www.google.co.in/");
+        driver.findElement(By.xpath("//*[@class='gLFyf gsfi']")).sendKeys("Java", Keys.ENTER);
+        Thread.sleep(2000);
+        //driver.findElement(By.className("LC20lb MBeuO DKV0Md")).click();
+        driver.findElement(By.xpath("//h3[contains(text(),'Java | Oracle')]")).click();
+        //h3[contains(text(),'Java | Oracle')]
 
 
     }
