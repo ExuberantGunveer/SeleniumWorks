@@ -62,10 +62,12 @@ public class launch {
 
         driver.navigate().to("https://www.google.co.in/");
         driver.findElement(By.xpath("//*[@class='gLFyf gsfi']")).sendKeys("Java", Keys.ENTER);
-        Thread.sleep(2000);
+        Thread.sleep(4000);
         //driver.findElement(By.className("LC20lb MBeuO DKV0Md")).click();
         driver.findElement(By.xpath("//h3[contains(text(),'Java | Oracle')]")).click();
         //h3[contains(text(),'Java | Oracle')]
+
+
 
 
     }

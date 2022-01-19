@@ -1,5 +1,7 @@
 package OrangeHRM;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+import net.jodah.failsafe.internal.util.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class ProjectHRM {
 
     public static void main(String[] args) throws InterruptedException {
-
+      //  WebDriverManager.chromedriver().setup();
         System.setProperty("webdriver.chrome.driver","C:\\SeleniumProject\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
@@ -32,13 +34,20 @@ public class ProjectHRM {
         driver.findElement(By.id("menu_admin_viewAdminModule")).click();
 
         driver.findElement(By.xpath("//input[@name='btnAdd']")).click();
-        driver.findElement(By.name("systemUser[employeeName][empName]")).sendKeys("Rishikesh Sampat chavan");
-        driver.findElement(By.id("systemUser_userName")).sendKeys("Rishav125");
+        driver.findElement(By.name("systemUser[employeeName][empName]")).sendKeys("Admin A");
+        driver.findElement(By.id("systemUser_userName")).sendKeys("Rishav12557");
         driver.findElement(By.id("systemUser_password")).sendKeys("123@Rishav");
         driver.findElement(By.id("systemUser_confirmPassword")).sendKeys("123@Rishav");
 
+
+
         Thread.sleep(1000);
         driver.findElement(By.name("btnSave")).click();
+        String Username = "Rishav12557";
+
+        String SearchNameXpath = "//a[contains(text(),'Rishav12557')]";
+        WebElement usernm = driver.findElement(By.xpath(String.format(SearchNameXpath,Username)));
+        Assert.isTrue(usernm.getText().equals(Username),"User Not Found");
 
         /*Thread.sleep(10000);
         driver.findElement(By.id("welcome")).click();
